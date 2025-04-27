@@ -1,0 +1,48 @@
+# .gitignore para projeto Django
+
+# Byte-compiled / otimizações
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ambiente virtual
+venv/
+env/
+ENV/
+.venv/
+.virtualenv/
+
+# Arquivos de configuração/editor
+*.sqlite3
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+*.db
+
+# Configurações específicas de IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Arquivos de migração indesejados (opcional — se quiser controlar as migrações, remova essa linha)
+# **/migrations/*.py
+# **/migrations/*.pyc
+
+# Media e arquivos estáticos gerados
+/media/
+staticfiles/
+
+# Configurações sensíveis
+*.env
+.env.*
+
+# Outros
+coverage/
+htmlcov/

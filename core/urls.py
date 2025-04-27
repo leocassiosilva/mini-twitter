@@ -1,0 +1,13 @@
+from django.urls import include, path
+from core.viewsets.user_viewsets import UserViewSet
+from rest_framework import routers
+
+core_router = routers.DefaultRouter()
+core_router.register(r'user', UserViewSet)
+
+
+
+
+urlpatterns = [
+    path("", include(core_router.urls)),
+]

@@ -53,6 +53,17 @@ class Post(models.Model):
         blank=True
     )
 
+
+    @property
+    def nome_usuario_criacao(self):
+        '''Retorna o nome do usuário que criou o post.'''
+        return self.usuario_criacao.username if self.usuario_criacao else None
+    
+    @property
+    def nome_usuario_atualizacao(self):
+        '''Retorna o nome do usuário que atualizou o post.'''
+        return self.usuario_atualizacao.username if self.usuario_atualizacao else None
+
     @property
     def curtidas_count(self):
         '''Retorna a quantidade de curtidas do post.'''

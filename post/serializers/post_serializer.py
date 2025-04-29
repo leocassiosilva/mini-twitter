@@ -6,7 +6,17 @@ from ..models import Post
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
-        fields = '__all__'
+        fields = [  
+            'id',
+            'titulo',
+            'conteudo',
+            'data_criacao',
+            'data_atualizacao',
+            'nome_usuario_criacao',
+            'nome_usuario_atualizacao',
+            'curtidas',
+            'curtidas_count',
+        ]
         read_only_fields = [
             'data_criacao',
             'data_atualizacao',

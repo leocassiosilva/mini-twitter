@@ -43,6 +43,26 @@ class RelacionamentoViewSet(viewsets.ModelViewSet):
 
 
 
-    
+    @action(detail=True, methods=['post'], permission_classes=[IsAuthenticated])
+    def deixar_seguir(self, request, *args, **kwargs):
+        """
+        Método para deixar de seguir um usuário.
+        """
+        
+        usuario_seguido = get_object_or_404(User, id=kwargs['pk'])
+
+        if usuario_seguido == request.user:
+            return Response({"message": "Você não pode deixar de seguir a si mesmo."}, status=400)    
+        
+        relacionamento = get_object_or_404(
+            Relacionamento,
+            seguidor=request.user,
+            seguindo=usuario_seguido
+        )
+        
+        relacionamento.delete()
+
+        return Response({"message": "Você deixou de seguir o usuário."})
+        
 
     

@@ -3,7 +3,7 @@ from core.viewsets.user_viewsets import UserViewSet
 from rest_framework import routers
 
 core_router = routers.DefaultRouter()
-core_router.register(r'user', UserViewSet)
+core_router.register(r'user', UserViewSet, basename='user')
 
 
 

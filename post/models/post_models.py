@@ -53,6 +53,11 @@ class Post(models.Model):
         blank=True
     )
 
+    @property
+    def total_curtidas(self):
+        '''Método que retorna o total de curtidas do post.'''
+        return self.curtidas.count()
+    
 
     @property
     def nome_usuario_criacao(self):

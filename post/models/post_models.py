@@ -54,12 +54,6 @@ class Post(models.Model):
     )
 
     @property
-    def total_curtidas(self):
-        '''Método que retorna o total de curtidas do post.'''
-        return self.curtidas.count()
-    
-
-    @property
     def nome_usuario_criacao(self):
         '''Retorna o nome do usuário que criou o post.'''
         return self.usuario_criacao.username if self.usuario_criacao else None

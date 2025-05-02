@@ -3,6 +3,8 @@ from post.serializers.post_serializer import PostSerializer
 from rest_framework import filters, viewsets
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.pagination import PageNumberPagination
+from rest_framework.decorators import action
+from rest_framework.response import Response
 
 from ..models import Post
 
@@ -38,3 +40,20 @@ class PostViewSet(viewsets.ModelViewSet):
         usuarios_seguidos = list(usuarios_seguidos) + [self.request.user.id]
 
         return Post.objects.filter(usuario_criacao__in=usuarios_seguidos).order_by('-data_criacao')
+
+    @action(detail=True, methods=['post'], permission_classes=[IsAuthenticated])
+    def curtir(self, request, pk=None):
+        """
+        Like a post.
+        """
+        post = self.get_object()
+
+        if request.user in post.curtidas.all():
+            post.curtidas.remove(request.user)
+            post.save()
+            return Response({'status': 'Você descurtiu o post.'}, status=200)
+        
+        post.curtidas.add(request.user)
+        post.save()
+        return Response({'status': 'Você Curtiu o post.'}, status=200)
+    

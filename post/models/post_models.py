@@ -53,7 +53,6 @@ class Post(models.Model):
         blank=True
     )
 
-
     @property
     def nome_usuario_criacao(self):
         '''Retorna o nome do usuário que criou o post.'''
